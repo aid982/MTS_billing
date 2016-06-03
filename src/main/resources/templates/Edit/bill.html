@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+  <head>
+    <title>View All</title>
+  </head>
+  <body>
+    <div layout:fragment="content">
+    
+     <h2>Bill</h2>
+        <form method="POST"  action="#" th:action="@{/bills/email}" th:object="${emploeeBill}" >        	
+        	<p>Id: <input type="text" th:field="*{id}" name ="id" /></p>
+         	<p>emploee: <input type="text" th:field="*{emploee.name}" /></p>
+         	<p>email: <input type="text" th:field="*{emploee.email}" /></p>         	
+         	<p>fileName: <input type="" th:field="*{fileName}" /></p>         	
+         	<p><input type="submit" value="send email" /></p> 				
+		</form>      
+  
+    </div>
+  </body>
+</html>

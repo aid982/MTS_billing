@@ -1,0 +1,27 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+  <head>
+    <title>View All</title>
+  </head>
+  <body>
+    <div layout:fragment="content">        
+        <h2>Emploee</h2>
+        <form method="POST"  action="#" th:action="@{/emploees}" th:object="${emploee}" >
+        	<p>Id: <input type="text" th:field="*{id}" /></p>
+        	<p>Login: <input type="text" th:field="*{login}" /></p>
+         	<p>Name: <input type="text" th:field="*{name}" /></p>
+         	<p>E-mail: <input type="email" th:field="*{email}" /></p>
+         	<p>password: <input type="password" th:field="*{password}" /></p>
+         	<p>department: <input type="text" th:field="*{department}" /></p>
+         	<p>limit (in copecs): <input type="number" th:field="*{limitPaidByCompany}" /></p>
+         	<p>phone : <input type="text" th:field="*{phone}" /></p>
+         	<p>package cost covered by company : <input type="checkbox" th:field="*{packageCostCovered}" /></p>
+         	<p><input type="submit" value="Save" /></p>				
+		</form>
+		
+		<form method="POST"  action="#" th:action="@{/emploees/delete}"  th:object="${emploee}">
+			<input type ="hidden" th:field="*{id}" />			        	
+         	<p><input type="submit" value="delete" /> </p>				
+		</form>       
+    </div>
+  </body>
+</html>

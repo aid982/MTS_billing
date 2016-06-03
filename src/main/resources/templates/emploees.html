@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+  <head>
+    <title>View All</title>
+  </head>
+  <body>
+    <div layout:fragment="content">        
+        <h2>Emploees </h2>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Emploee</th>
+                    <th>Phone #</th>
+                    <th>Department</th>
+                    <th>e-mail</th>
+                    <th>Package cost is covered</th>
+                    <th>Limit (UAH)</th>                    
+                </tr>                
+            </thead>
+            <tbody>
+                <tr th:if="${emploees.empty}">
+                    <td colspan="3">no emploees</td>
+                  </tr>
+                  <tr th:each="emploee : ${emploees}">                   
+                    <td><a href="emploee.html" th:href="@{'/emploees/' + ${emploee.id}}" th:text="${emploee}"></a></td>                    
+                    <td th:text="${emploee.phone}"></td>
+                    <td th:text="${emploee.department}"></td>
+                     <td th:text="${emploee.email}"></td>
+                     <td th:text="${emploee.packageCostCovered}"></td>                     
+                     <td th:text="${emploee.limitPaidByCompany}/100"></td>                  
+                    
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </body>
+</html>
