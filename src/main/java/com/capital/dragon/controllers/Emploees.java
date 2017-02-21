@@ -1,7 +1,8 @@
 package com.capital.dragon.controllers;
 
 
-
+import com.capital.dragon.REPO.EmploeeRepo;
+import com.capital.dragon.model.Emploee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.capital.dragon.REPO.EmploeeRepo;
-import com.capital.dragon.model.Emploee;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 
 @Controller
@@ -24,8 +27,16 @@ public class Emploees {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView list() {		
-		return new ModelAndView("emploees","emploees",emploeeRepo.findAll());
+    public ModelAndView list() {
+        List<Emploee> sortedEmploeeList = new ArrayList<>();
+        for (Emploee emploee : emploeeRepo.findAll()) {
+            sortedEmploeeList.add(emploee);
+        }
+        Collections.sort(sortedEmploeeList, Comparator.comparing((Emploee e) -> e.getAutoCreated()).reversed()
+                .thenComparing((Emploee e) -> e.getName()));
+
+
+        return new ModelAndView("emploees", "emploees", sortedEmploeeList);
 
 	}
 	

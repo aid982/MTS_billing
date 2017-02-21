@@ -1,7 +1,7 @@
 package com.capital.dragon.REPO;
 
-import org.springframework.data.repository.CrudRepository;
 import com.capital.dragon.model.Emploee;
+import org.springframework.data.repository.CrudRepository;
 
 
 public interface EmploeeRepo extends CrudRepository<Emploee, Integer>{

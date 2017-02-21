@@ -1,23 +1,23 @@
 package com.capital.dragon;
 
-import java.io.File;
-
+import com.capital.dragon.REPO.EmploeeBillRepo;
+import com.capital.dragon.REPO.EmploeeRepo;
+import com.capital.dragon.service.ParseService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import com.capital.dragon.REPO.EmploeeBillRepo;
-import com.capital.dragon.REPO.EmploeeRepo;
-import com.capital.dragon.model.Emploee;
-import com.capital.dragon.service.ParseUploadedFile;
+import java.io.File;
 
 public class ParseTesting_Emploee {
 	@Mock
 	private EmploeeBillRepo emploeeBillRepo;
 	@Mock
 	private EmploeeRepo emploeeRepo;
+    @Autowired
+    private ParseService parseService;
 
 	@Before
 	public void initMocks() {
@@ -28,7 +28,7 @@ public class ParseTesting_Emploee {
 	public void Test1() throws Exception {
 		File uploadedFile = new File(MtsBillingApplication.UPLOAD_DIR + "/" + "empl.csv");
 		// Mockito.when(emploeeRepo.findByPhone("")).thenReturn(new Emploee());
-		ParseUploadedFile.parseEmploeesList(uploadedFile, emploeeRepo);
+        parseService.parseEmploeesList(uploadedFile);
 
 	}
 

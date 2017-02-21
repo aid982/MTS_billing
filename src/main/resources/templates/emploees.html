@@ -13,7 +13,8 @@
                     <th>Department</th>
                     <th>e-mail</th>
                     <th>Package cost is covered</th>
-                    <th>Limit (UAH)</th>                    
+                    <th>Limit (UAH)</th>
+                    <th>Auto created</th>
                 </tr>                
             </thead>
             <tbody>
@@ -25,8 +26,9 @@
                     <td th:text="${emploee.phone}"></td>
                     <td th:text="${emploee.department}"></td>
                      <td th:text="${emploee.email}"></td>
-                     <td th:text="${emploee.packageCostCovered}"></td>                     
-                     <td th:text="${emploee.limitPaidByCompany}/100"></td>                  
+                      <td th:text="${emploee.packageCostCovered}"></td>
+                      <td th:text="${emploee.limitPaidByCompany}/100"></td>
+                      <td th:text="${emploee.autoCreated}"></td>
                     
                 </tr>
             </tbody>

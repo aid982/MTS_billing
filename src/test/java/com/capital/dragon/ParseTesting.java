@@ -1,18 +1,13 @@
 package com.capital.dragon;
 
-import java.io.File;
-import java.text.DecimalFormat;
-
+import com.capital.dragon.REPO.EmploeeBillRepo;
+import com.capital.dragon.REPO.EmploeeRepo;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.capital.dragon.REPO.EmploeeBillRepo;
-import com.capital.dragon.REPO.EmploeeRepo;
-import com.capital.dragon.model.Emploee;
-import com.capital.dragon.service.ParseUploadedFile;
+import java.io.File;
 
 public class ParseTesting {
 	@Mock
@@ -31,11 +26,10 @@ public class ParseTesting {
 		// Mockito.when(emploeeRepo.findByPhone("")).thenReturn(new Emploee());
 		//DecimalFormat df = new DecimalFormat("#.###");		;
 		//System.out.println(Math.round(149.99*100.00)/100.00);	
-		
-		ParseUploadedFile.parseEmploeesBills(uploadedFile, emploeeRepo, emploeeBillRepo);
-		
-		
 
-	}
+        //ParseService.parseEmploeesBills(uploadedFile);
+
+
+    }
 
 }

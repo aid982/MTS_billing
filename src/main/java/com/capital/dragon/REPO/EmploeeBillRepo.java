@@ -1,10 +1,9 @@
 package com.capital.dragon.REPO;
 
-import java.util.List;
-
-import org.springframework.data.repository.CrudRepository;
 import com.capital.dragon.model.EmploeeBill;
+import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
 
 public interface EmploeeBillRepo extends CrudRepository<EmploeeBill, Integer>{
 	EmploeeBill findByFileName(String filename);	

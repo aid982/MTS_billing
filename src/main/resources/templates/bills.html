@@ -6,6 +6,9 @@
 </head>
 <body>
 	<div layout:fragment="content">
+        <div th:if="${message}">
+            <h2 th:text="${message}"/>
+        </div>
 		<h2>Choose period</h2>
 		<form method="GET" action="">
 			<table>
@@ -20,8 +23,8 @@
 			</table>
 		</form>
 		<form method="POST" th:action="@{bills/email}">
-			<table>				
-				<tr>					
+            <table>
+                <tr>
 					<button type="submit" class="btn">Send emails for all bills</button>
 				</tr>
 			</table>

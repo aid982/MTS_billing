@@ -15,8 +15,8 @@
  */
 package com.capital.dragon.Security;
 
-import java.util.Collection;
-
+import com.capital.dragon.REPO.EmploeeRepo;
+import com.capital.dragon.model.Emploee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -25,8 +25,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.capital.dragon.REPO.EmploeeRepo;
-import com.capital.dragon.model.Emploee;
+import java.util.Collection;
 
 /**
 
@@ -47,10 +46,17 @@ public class UserRepositoryUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String login)
             throws UsernameNotFoundException {
-        Emploee user = emploeeRepo.findByLogin(login);
+        Emploee user = emploeeRepo.findByEmail(login);
         if(user == null) {
             throw new UsernameNotFoundException("Could not find user " + login);
         }
+
+        if ((user.getAdmin() == null) || (user.getAdmin() == false)) {
+            throw new UsernameNotFoundException("Could not find user " + login);
+        }
+
+
+
         // Retrive all roles 
         //user.getRoles().size();
         //System.out.println(user.getRoles());
@@ -58,6 +64,8 @@ public class UserRepositoryUserDetailsService implements UserDetailsService {
     }
 
     private final static class CustomUserDetails extends Emploee implements UserDetails {
+
+        private static final long serialVersionUID = 5639683223516504866L;
 
         private CustomUserDetails(Emploee user) {
             super(user);
@@ -94,7 +102,5 @@ public class UserRepositoryUserDetailsService implements UserDetailsService {
         public boolean isEnabled() {
             return true;
         }
-
-        private static final long serialVersionUID = 5639683223516504866L;
     }
 }
