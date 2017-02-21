@@ -26,6 +26,7 @@ public class EmailSender {
         helper.setText(emploeeBill.toString());
         helper.setTo(emploeeBill.getEmploee().getEmail());
         helper.setFrom(emploee.getEmail());
+        helper.setBcc(emploee.getEmail());
         helper.setSubject(emploeeBill.getPeriod() + " cell phone bill for " + emploeeBill.getEmploee().getName() + " " + emploeeBill.getToBePaid() + " UAH");
         helper.addAttachment(emploeeBill.getFileName(), new File(emploeeBill.getFileName()));
         javaMailSender.send(mail);
